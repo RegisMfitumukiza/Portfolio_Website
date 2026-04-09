@@ -1,0 +1,14 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo \"Static site\""
+  },
+  "dependencies": {
+    "resend": "latest"
+  }
+}
+

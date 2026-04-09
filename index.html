@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mfitumukiza — Full-stack developer building modern web apps, APIs, and responsive user experiences."
+    />
+    <link rel="canonical" href="https://your-domain.vercel.app/" />
+
+    <meta property="og:title" content="Mfitumukiza | Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="Mfitumukiza — Full-stack developer building modern web apps, APIs, and responsive user experiences."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://your-domain.vercel.app/icons/og-image.png"
+    />
+    <meta property="og:site_name" content="Mfitumukiza Portfolio" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mfitumukiza | Full-Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Mfitumukiza — Full-stack developer building modern web apps, APIs, and responsive user experiences."
+    />
+    <meta
+      name="twitter:image"
+      content="https://your-domain.vercel.app/icons/og-image.png"
+    />
+    <title>Mfitumukiza | Full-Stack Developer</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png" />
+    <link rel="manifest" href="./icons/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="dark-theme">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="container nav">
+        <a href="#hero" class="brand">
+          <img
+            src="./icons/favicon-32x32.png"
+            alt=""
+            class="brand-icon"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          />
+          <span>MR</span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#timeline">Experience</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button
+          type="button"
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          aria-label="Switch to light mode"
+          aria-pressed="false"
+        ></button>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="hero" class="hero container">
+        <div class="hero-content">
+          <div class="hero-left">
+            <p class="hero-greeting">Hello, I’m</p>
+            <h1 class="hero-name">Mfitumukiza</h1>
+            <h2 class="hero-subheading">
+              And I'm a
+              <span class="typed-wrap">
+                <span id="typed-role"></span><span class="typed-cursor">|</span>
+              </span>
+            </h2>
+            <p class="hero-description">
+              I build reliable, user-focused web applications—clean interfaces,
+              well-structured APIs, and databases that scale. I enjoy turning ideas
+              into products that feel polished and perform well.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">View My Work</a>
+              <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <img
+              src="./Images/portfolio.jpeg"
+              alt="Portrait of Mfitumukiza"
+              class="hero-profile"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+        <a href="#about" class="scroll-indicator" aria-label="Scroll to About section"
+          >↓ Scroll</a
+        >
+      </section>
+
+      <section id="about" class="section container about-section">
+        <div class="about-layout">
+          <div class="about-left about-reveal-left">
+            <img
+              src="./Images/portfolio.jpeg"
+              alt="Mfitumukiza portrait"
+              class="about-portrait"
+            />
+            <a
+              href="./CV/MFITUMUKIZA%20Regis-CV.pdf"
+              class="btn btn-about-cv"
+              download
+            >
+              Download CV
+            </a>
+          </div>
+          <div class="about-right about-reveal-fade">
+            <p class="about-label">GET TO KNOW ME</p>
+            <h2>About Me</h2>
+            <p class="about-copy">
+              I'm a Full-stack Developer who thrives at the intersection of logic
+              and creativity. Whether it's a smooth UI or a solid backend, I build
+              things that work beautifully and scale effortlessly.
+            </p>
+            <p class="about-copy">
+              My journey into tech started with curiosity and grew into a deep
+              passion for crafting digital products that are not just functional,
+              but delightful to use. I'm constantly learning, building, and pushing
+              the boundaries of what's possible on the web.
+            </p>
+
+            <div class="about-stats">
+              <article class="about-stat">
+                <p class="about-stat-value" data-count-target="10">0+</p>
+                <p class="about-stat-label">Projects completed</p>
+              </article>
+              <article class="about-stat">
+                <p class="about-stat-value" data-count-target="4">0+</p>
+                <p class="about-stat-label">Years of experience</p>
+              </article>
+              <article class="about-stat">
+                <p class="about-stat-value" data-count-target="5">0+</p>
+                <p class="about-stat-label">Technologies</p>
+              </article>
+            </div>
+
+            <div class="about-skills-wrap">
+              <h3 class="about-skills-title">Key Skills</h3>
+              <div class="about-tags">
+                <span class="about-tag">React</span>
+                <span class="about-tag">Node.js</span>
+                <span class="about-tag">JavaScript</span>
+                <span class="about-tag">TypeScript</span>
+                <span class="about-tag">Git</span>
+                <span class="about-tag">REST APIs</span>
+                <span class="about-tag">SQL / NoSQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section container projects-section">
+        <header class="projects-header">
+          <p class="projects-label">WHAT I&rsquo;VE BUILT</p>
+          <h2 class="projects-heading">Projects</h2>
+          <span class="projects-heading-accent" aria-hidden="true"></span>
+        </header>
+        <div
+          class="project-filters"
+          role="group"
+          aria-label="Filter projects by category"
+        >
+          <button type="button" class="project-filter-btn active" data-filter="all">
+            All
+          </button>
+          <button type="button" class="project-filter-btn" data-filter="frontend">
+            Frontend
+          </button>
+          <button type="button" class="project-filter-btn" data-filter="backend">
+            Backend
+          </button>
+          <button type="button" class="project-filter-btn" data-filter="fullstack">
+            Full-Stack
+          </button>
+        </div>
+        <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
+        <p class="projects-empty" id="projects-empty" hidden>
+          No projects in this category yet.
+        </p>
+      </section>
+
+      <section id="skills" class="section container skills-section">
+        <header class="skills-header">
+          <p class="skills-label">WHAT I WORK WITH</p>
+          <h2 class="skills-heading">Skills &amp; Expertise</h2>
+          <span class="skills-heading-accent" aria-hidden="true"></span>
+        </header>
+
+        <div class="skills-cards-grid" id="skills-cards">
+          <article class="skills-card" data-skills-card>
+            <h3 class="skills-card-title">Frontend</h3>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">JavaScript</span>
+                <span class="skills-progress-value" data-percent="90">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="90"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">React</span>
+                <span class="skills-progress-value" data-percent="80">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="80"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">HTML &amp; CSS</span>
+                <span class="skills-progress-value" data-percent="75">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="75"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">Figma</span>
+                <span class="skills-progress-value" data-percent="65">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="65"></span>
+              </div>
+            </div>
+          </article>
+
+          <article class="skills-card" data-skills-card>
+            <h3 class="skills-card-title">Backend</h3>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">Node.js</span>
+                <span class="skills-progress-value" data-percent="90">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="90"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">Spring Boot</span>
+                <span class="skills-progress-value" data-percent="40">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="40"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">REST APIs</span>
+                <span class="skills-progress-value" data-percent="80">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="80"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">PostgreSQL</span>
+                <span class="skills-progress-value" data-percent="70">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="70"></span>
+              </div>
+            </div>
+          </article>
+
+          <article class="skills-card" data-skills-card>
+            <h3 class="skills-card-title">Tools &amp; Other</h3>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">Git &amp; GitHub</span>
+                <span class="skills-progress-value" data-percent="75">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="75"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">Docker</span>
+                <span class="skills-progress-value" data-percent="50">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="50"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">Linux</span>
+                <span class="skills-progress-value" data-percent="50">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="50"></span>
+              </div>
+            </div>
+
+            <div class="skills-row" data-skill-row>
+              <div class="skills-row-top">
+                <span class="skills-row-name">MongoDB</span>
+                <span class="skills-progress-value" data-percent="70">0%</span>
+              </div>
+              <div class="skills-progress-track">
+                <span class="skills-progress-fill" data-percent="70"></span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <section class="skills-technologies" aria-label="Technologies I've worked with">
+          <h3 class="skills-technologies-title">Technologies I've worked with</h3>
+          <div class="skills-tech-tags" id="skills-tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">Linux</span>
+            <span class="tech-tag">REST APIs</span>
+          </div>
+        </section>
+      </section>
+
+      <section id="timeline" class="section container experience-section">
+        <header class="experience-header">
+          <p class="experience-label">MY JOURNEY</p>
+          <h2 class="experience-heading">Experience</h2>
+          <span class="experience-heading-accent" aria-hidden="true"></span>
+        </header>
+
+        <div class="experience-tabs" role="tablist" aria-label="Experience and education">
+          <button
+            type="button"
+            class="experience-tab active"
+            role="tab"
+            aria-selected="true"
+            aria-controls="experience-work"
+            data-tab="work"
+          >
+            Work Experience
+          </button>
+          <button
+            type="button"
+            class="experience-tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="experience-education"
+            data-tab="education"
+          >
+            Education
+          </button>
+        </div>
+
+        <div class="experience-tab-panels">
+          <div
+            id="experience-work"
+            class="experience-timeline active"
+            role="tabpanel"
+            aria-label="Work Experience timeline"
+          >
+            <div class="timeline-wrapper">
+              <div class="timeline-line" aria-hidden="true"></div>
+
+              <article class="timeline-item is-latest" data-timeline-card>
+                <div class="timeline-marker"></div>
+                <div class="timeline-card">
+                  <div class="timeline-card-top">
+                    <div>
+                      <h3 class="timeline-title">
+                        Software Developer Intern &amp; IT Administrator
+                      </h3>
+                      <p class="timeline-organization">
+                        World-Wide E-Learning Campus
+                      </p>
+                      <p class="timeline-dates">2021 &mdash; 2024 &middot; Kigali, Rwanda</p>
+                    </div>
+                    <span class="timeline-badge">Latest</span>
+                  </div>
+                  <p class="timeline-description">
+                    Built internal applications and supported IT operations, including
+                    systems administration and network troubleshooting.
+                  </p>
+                  <ul class="timeline-list">
+                    <li>
+                      Built APIs with CRUD operations to manage client access codes and
+                      help employees track daily performance (ONVUE Customer Support app).
+                    </li>
+                    <li>
+                      Developed a mobile-based smart home monitoring app with sensors,
+                      location tracking, and geofencing.
+                    </li>
+                    <li>
+                      Installed and maintained servers/hardware/software, and provided
+                      technical support while diagnosing hardware/software and LAN issues.
+                    </li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="timeline-item" data-timeline-card>
+                <div class="timeline-marker is-hollow"></div>
+                <div class="timeline-card">
+                  <div class="timeline-card-top">
+                    <div>
+                      <h3 class="timeline-title">Academic Internship (Software Development)</h3>
+                      <p class="timeline-organization">kLab</p>
+                      <p class="timeline-dates">Academic Internship</p>
+                    </div>
+                    <span class="timeline-badge">Completed</span>
+                  </div>
+                  <p class="timeline-description">
+                    Worked on hands-on projects under mentorship to strengthen full-stack
+                    development and UI/UX skills.
+                  </p>
+                  <ul class="timeline-list">
+                    <li>
+                      Built projects using MERN technologies and improved implementation
+                      practices through feedback and code reviews.
+                    </li>
+                    <li>
+                      Enhanced UI/UX design skills by applying design principles and
+                      prototyping workflows.
+                    </li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div
+            id="experience-education"
+            class="experience-timeline"
+            role="tabpanel"
+            aria-label="Education timeline"
+            hidden
+          >
+            <div class="timeline-wrapper">
+              <div class="timeline-line" aria-hidden="true"></div>
+
+              <article class="timeline-item is-latest" data-timeline-card>
+                <div class="timeline-marker"></div>
+                <div class="timeline-card">
+                  <div class="timeline-card-top">
+                    <div>
+                      <h3 class="timeline-title">kLab Academy</h3>
+                      <p class="timeline-organization">kLab</p>
+                      <p class="timeline-dates">March 2026 &mdash; Present</p>
+                    </div>
+                    <span class="timeline-badge">Current</span>
+                  </div>
+                  <p class="timeline-description">
+                    Intensive training focused on practical software development, building
+                    real projects, and improving collaboration and delivery skills.
+                  </p>
+                  <ul class="timeline-list">
+                    <li>Built and shipped portfolio and web projects from Figma to code.</li>
+                    <li>Strengthened full-stack fundamentals across frontend and backend.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="timeline-item" data-timeline-card>
+                <div class="timeline-marker is-hollow"></div>
+                <div class="timeline-card">
+                  <div class="timeline-card-top">
+                    <div>
+                      <h3 class="timeline-title">
+                        Undergraduate in Information Technology (Software Engineering)
+                      </h3>
+                      <p class="timeline-organization">
+                        Adventist University of Central Africa
+                      </p>
+                      <p class="timeline-dates">Kigali, Rwanda</p>
+                    </div>
+                    <span class="timeline-badge">Completed</span>
+                  </div>
+                  <p class="timeline-description">
+                    Undergraduate studies focused on software engineering principles,
+                    development fundamentals, and building strong IT foundations.
+                  </p>
+                </div>
+              </article>
+
+              <article class="timeline-item" data-timeline-card>
+                <div class="timeline-marker is-hollow"></div>
+                <div class="timeline-card">
+                  <div class="timeline-card-top">
+                    <div>
+                      <h3 class="timeline-title">Professional Training &amp; Certifications</h3>
+                      <p class="timeline-organization">Self-development</p>
+                      <p class="timeline-dates">Completed</p>
+                    </div>
+                    <span class="timeline-badge">Completed</span>
+                  </div>
+                  <p class="timeline-description">
+                    Completed industry-aligned training in cloud fundamentals, IT support,
+                    Linux essentials, cybersecurity, and network operations.
+                  </p>
+                  <ul class="timeline-list">
+                    <li>MS 365 Fundamentals (Cloud Computing)</li>
+                    <li>Google IT Support Fundamentals</li>
+                    <li>Cisco Networking Academy: Linux Essentials &amp; Intro to Cybersecurity</li>
+                    <li>Internet Society: Advanced Network Operations</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section container contact-section">
+        <header class="contact-header">
+          <p class="contact-label">GET IN TOUCH</p>
+          <h2 class="contact-heading">Contact Me</h2>
+          <span class="contact-heading-accent" aria-hidden="true"></span>
+        </header>
+
+        <div class="contact-layout">
+          <div class="contact-left">
+            <p class="contact-intro">
+              Have a project in mind, want to collaborate, or just want to say hi?
+              My inbox is always open. I'll get back to you as soon as possible.
+            </p>
+
+            <div class="contact-items" role="list">
+              <div class="contact-item" role="listitem">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                    <path
+                      d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5v-11Z"
+                      stroke="#151925"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="m6.5 7.5 5.5 4 5.5-4"
+                      stroke="#151925"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-item-label">Email</p>
+                  <a
+                    class="contact-item-value"
+                    href="mailto:mfitumukizaregis55@gmail.com"
+                    >mfitumukizaregis55@gmail.com</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-item" role="listitem">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                    <path
+                      d="M7 3.5h2.2c.5 0 1 .3 1.1.8l.8 2.6c.1.5 0 1-.4 1.3l-1.6 1.3a13.7 13.7 0 0 0 5.9 5.9l1.3-1.6c.3-.4.8-.6 1.3-.4l2.6.8c.5.1.8.6.8 1.1V17c0 1.9-1.6 3.5-3.5 3.5h-.7C9.7 20.5 3.5 14.3 3.5 6.2V5.5C3.5 3.6 5.1 2 7 2Z"
+                      stroke="#151925"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-item-label">Phone</p>
+                  <a class="contact-item-value" href="tel:+250728529299"
+                    >0728529299</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-item" role="listitem">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+                    <path
+                      d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"
+                      stroke="#151925"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12 11.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
+                      stroke="#151925"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p class="contact-item-label">Location</p>
+                  <p class="contact-item-value">Kigali, Rwanda</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-socials">
+              <p class="contact-socials-label">Find me on</p>
+              <div class="contact-socials-row">
+                <a
+                  class="social-btn"
+                  href="https://github.com/RegisMfitumukiza"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path
+                      d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8-1.4 1.4-2 1.6-.2 2.3 1.1 2.3 1.1.3.9.8 1.3 1.3 1.5.1-.7.4-1.2.7-1.5-2.3-.3-4.7-1.1-4.7-5A4 4 0 0 1 8 8.5 3.7 3.7 0 0 1 8.1 6s.8-.3 2.6 1a9 9 0 0 1 4.7 0c1.8-1.3 2.6-1 2.6-1 .3.8.2 1.8.1 2.5A4 4 0 0 1 19 12c0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  class="social-btn"
+                  href="https://www.linkedin.com/in/regismfitumukiza2208"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path
+                      d="M6.5 6.7A2.2 2.2 0 1 1 6.5 2.3a2.2 2.2 0 0 1 0 4.4ZM4.6 21.7h3.8V8.5H4.6v13.2ZM10.1 8.5h3.6v1.8h.1c.5-1 1.8-2.1 3.7-2.1 3.9 0 4.6 2.6 4.6 5.9v7.6h-3.8v-6.7c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5v6.8h-3.8V8.5Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  class="social-btn"
+                  href="https://www.instagram.com/regisdaking?igsh=MXZ4eHEwbm9sYTFlcg=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path
+                      d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 3.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 9.5ZM18.2 6.6a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-right">
+            <form id="contact-form" class="contact-form-card" novalidate>
+              <input
+                type="text"
+                name="hp"
+                autocomplete="off"
+                tabindex="-1"
+                class="contact-hp"
+                aria-hidden="true"
+              />
+              <div class="contact-form-row contact-form-row-2">
+                <div class="field">
+                  <input id="name" name="name" placeholder=" " required />
+                  <label for="name">Your Name</label>
+                  <small class="field-error" data-error-for="name"></small>
+                </div>
+                <div class="field">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder=" "
+                    required
+                  />
+                  <label for="email">Your Email</label>
+                  <small class="field-error" data-error-for="email"></small>
+                </div>
+              </div>
+
+              <div class="contact-form-row">
+                <div class="field">
+                  <input
+                    id="subject"
+                    name="subject"
+                    placeholder=" "
+                    required
+                  />
+                  <label for="subject">Subject</label>
+                  <small class="field-error" data-error-for="subject"></small>
+                </div>
+              </div>
+
+              <div class="contact-form-row">
+                <div class="field">
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder=" "
+                    rows="5"
+                    required
+                  ></textarea>
+                  <label for="message">Message</label>
+                  <small class="field-error" data-error-for="message"></small>
+                </div>
+              </div>
+
+              <button type="submit" class="contact-submit">
+                <span class="contact-submit-icon" aria-hidden="true">➤</span>
+                Send Message
+              </button>
+
+              <p class="contact-form-note">
+                All fields are required. Your info is never shared.
+              </p>
+              <p id="form-status" class="contact-form-status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <div class="container footer-inner">
+        <div class="footer-top">
+          <div class="footer-col footer-col-brand">
+            <p class="footer-brand">Mfitumukiza</p>
+            <span class="footer-brand-accent" aria-hidden="true"></span>
+            <p class="footer-text">
+              Full-stack developer building modern web apps, APIs, and responsive user
+              experiences.
+            </p>
+            <div class="footer-socials" aria-label="Social links">
+              <a
+                class="footer-social-btn"
+                href="https://github.com/RegisMfitumukiza"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path
+                    d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8-1.4 1.4-2 1.6-.2 2.3 1.1 2.3 1.1.3.9.8 1.3 1.3 1.5.1-.7.4-1.2.7-1.5-2.3-.3-4.7-1.1-4.7-5A4 4 0 0 1 8 8.5 3.7 3.7 0 0 1 8.1 6s.8-.3 2.6 1a9 9 0 0 1 4.7 0c1.8-1.3 2.6-1 2.6-1 .3.8.2 1.8.1 2.5A4 4 0 0 1 19 12c0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"
+                  />
+                </svg>
+              </a>
+              <a
+                class="footer-social-btn"
+                href="https://www.linkedin.com/in/regismfitumukiza2208"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path
+                    d="M6.5 6.7A2.2 2.2 0 1 1 6.5 2.3a2.2 2.2 0 0 1 0 4.4ZM4.6 21.7h3.8V8.5H4.6v13.2ZM10.1 8.5h3.6v1.8h.1c.5-1 1.8-2.1 3.7-2.1 3.9 0 4.6 2.6 4.6 5.9v7.6h-3.8v-6.7c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5v6.8h-3.8V8.5Z"
+                  />
+                </svg>
+              </a>
+              <a
+                class="footer-social-btn"
+                href="https://www.instagram.com/regisdaking?igsh=MXZ4eHEwbm9sYTFlcg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  <path
+                    d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 3.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 9.5ZM18.2 6.6a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <nav class="footer-col footer-col-links" aria-label="Quick links">
+            <p class="footer-col-title">Quick Links</p>
+            <a class="footer-link" href="#hero">Home</a>
+            <a class="footer-link" href="#about">About</a>
+            <a class="footer-link" href="#projects">Projects</a>
+            <a class="footer-link" href="#skills">Skills</a>
+            <a class="footer-link" href="#timeline">Experience</a>
+            <a class="footer-link" href="./blog.html">Blog</a>
+          </nav>
+
+          <div class="footer-col footer-col-services">
+            <p class="footer-col-title">Services</p>
+            <p class="footer-item">Web Development</p>
+            <p class="footer-item">API Development</p>
+            <p class="footer-item">Database Design</p>
+            <p class="footer-item">UI/UX Design</p>
+          </div>
+
+          <div class="footer-col footer-col-contact">
+            <p class="footer-col-title">Contact</p>
+            <p class="footer-item">
+              Email<br />
+              <a class="footer-link" href="mailto:mfitumukizaregis55@gmail.com"
+                >mfitumukizaregis55@gmail.com</a
+              >
+            </p>
+            <p class="footer-item">
+              Phone<br />
+              <a class="footer-link" href="tel:+250728529299">+250 728 529 299</a>
+            </p>
+            <p class="footer-item">
+              Location<br />
+              Kigali, Rwanda
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <div class="footer-bottom">
+          <p class="footer-copy">
+            &copy; <span class="js-year">2025</span> Mfitumukiza. All rights reserved. Built
+            with passion.
+          </p>
+          <button
+            type="button"
+            class="back-to-top is-sticky"
+            id="back-to-top"
+            aria-label="Back to top"
+          >
+            <span aria-hidden="true">↑</span> Back to top
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <dialog id="project-modal">
+      <article>
+        <button id="close-modal" aria-label="Close modal">X</button>
+        <img id="modal-image" src="" alt="" />
+        <h3 id="modal-title"></h3>
+        <p id="modal-description"></p>
+        <a id="modal-live-link" href="#" target="_blank" rel="noopener">Live Site</a>
+        <a id="modal-code-link" href="#" target="_blank" rel="noopener">GitHub</a>
+      </article>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
