@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vercel dev",
-    "build": "echo \"Static site\""
+    "build": "node ./build.mjs"
   },
   "dependencies": {
     "resend": "latest"
