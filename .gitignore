@@ -1,9 +1,4 @@
-# create .gitignore first (important)
-@"
 node_modules/
 .env
-.vercel
-"@ | Out-File -Encoding utf8 .gitignore
-
-git add .
-git commit -m "Portfolio initial implementation"
+.vercel/
+.DS_Store
