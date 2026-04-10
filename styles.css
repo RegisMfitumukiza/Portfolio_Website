@@ -2223,13 +2223,20 @@ a.contact-item-value:hover {
 }
 
 /* ---------- Blog pages ---------- */
+/* Match portfolio sections: same page background + subtle top divider */
 .blog-page,
 .post-page {
-  background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  background: transparent;
+  border-top: 1px solid rgba(30, 41, 59, 0.75);
+}
+
+.light-theme .blog-page,
+.light-theme .post-page {
+  border-top-color: rgba(15, 23, 42, 0.1);
 }
 
 .blog-header {
-  margin-bottom: 1.3rem;
+  margin-bottom: 0.25rem;
 }
 
 .blog-label {
@@ -2243,6 +2250,7 @@ a.contact-item-value:hover {
 .blog-title {
   margin: 0;
   font-size: clamp(1.8rem, 2.8vw, 2.3rem);
+  color: var(--text-primary);
 }
 
 .blog-title-accent {
@@ -2251,6 +2259,7 @@ a.contact-item-value:hover {
   height: 4px;
   border-radius: 999px;
   margin-top: 0.8rem;
+  margin-bottom: 0;
   background: var(--accent);
 }
 
@@ -2291,6 +2300,18 @@ a.contact-item-value:hover {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   transition: opacity 0.18s ease, transform 0.18s ease;
+  align-items: stretch;
+}
+
+/* Single card (e.g. filtered category): centered, not stuck in column 1 */
+.blog-grid:has(> .blog-card:only-child) {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.blog-grid:has(> .blog-card:only-child) .blog-card.featured {
+  grid-column: auto;
 }
 
 .blog-grid.is-filtering {
@@ -2459,14 +2480,30 @@ a.contact-item-value:hover {
 }
 
 .back-to-blog {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
+  margin-bottom: 1.75rem;
+  padding: 0.4rem 0;
+}
+
+.post-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.post-header .blog-badge {
+  align-self: flex-start;
 }
 
 .post-header h1 {
-  margin: 0.8rem 0 0.6rem;
+  margin: 0;
   font-size: clamp(2rem, 4.5vw, 2.7rem);
+  color: var(--text-primary);
 }
 
 .post-meta {
