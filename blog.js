@@ -20,6 +20,208 @@
     return `blog-badge-${category}`;
   }
 
+  const WPM = 200;
+
+  function countWords(text) {
+    return String(text || "")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean).length;
+  }
+
+  function wordCountFromBlocks(blocks) {
+    if (!Array.isArray(blocks)) return 0;
+    let n = 0;
+    for (const b of blocks) {
+      if (!b || !b.type) continue;
+      if (b.type === "p" || b.type === "blockquote" || b.type === "h2" || b.type === "h3") {
+        n += countWords(b.text);
+      } else if (b.type === "ul") {
+        (b.items || []).forEach((item) => {
+          n += countWords(item);
+        });
+      } else if (b.type === "code") {
+        n += countWords(b.code);
+      } else if (b.type === "img" && b.caption) {
+        n += countWords(b.caption);
+      }
+    }
+    return n;
+  }
+
+  function readMinutesFromPost(post) {
+    const words = wordCountFromBlocks(post.content || []);
+    if (words <= 0) return null;
+    return Math.max(1, Math.ceil(words / WPM));
+  }
+
+  function readTimeLabel(post) {
+    const mins = readMinutesFromPost(post);
+    if (mins != null) return `${mins} min read`;
+    const fallback = post.readTime;
+    return fallback ? String(fallback) : "1 min read";
+  }
+
+  function slugifyHeading(text, index) {
+    let base = String(text || "")
+      .toLowerCase()
+      .trim()
+      .replace(/['"]/g, "")
+      .replace(/[^\p{L}\p{N}\s-]/gu, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+    if (!base) base = `section-${index}`;
+    return base;
+  }
+
+  function ensureHeadingIds(contentRoot) {
+    if (!contentRoot) return [];
+    const headings = Array.from(contentRoot.querySelectorAll("h2, h3"));
+    const used = new Set(Array.from(document.querySelectorAll("[id]")).map((el) => el.id));
+    headings.forEach((el, i) => {
+      if (el.id && el.id.trim()) return;
+      let base = slugifyHeading(el.textContent, i);
+      let id = base;
+      let n = 1;
+      while (used.has(id)) {
+        id = `${base}-${n++}`;
+      }
+      used.add(id);
+      el.id = id;
+    });
+    return headings;
+  }
+
+  function pickRelatedPosts(current, limit) {
+    const others = posts.filter((p) => p.slug !== current.slug);
+    if (!others.length) return [];
+    const curTags = new Set(current.tags || []);
+    const scored = others.map((p) => {
+      let score = 0;
+      if (p.category === current.category) score += 4;
+      (p.tags || []).forEach((t) => {
+        if (curTags.has(t)) score += 2;
+      });
+      return { p, score };
+    });
+    scored.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return String(b.p.dateISO || "").localeCompare(String(a.p.dateISO || ""));
+    });
+    return scored.slice(0, limit).map(({ p }) => p);
+  }
+
+  function createRelatedCard(post) {
+    const author = authorFor(post);
+    const card = document.createElement("article");
+    card.className = "related-card";
+    card.innerHTML = `
+      <a class="related-card-media" href="./post.html?slug=${encodeURIComponent(post.slug)}" aria-hidden="true" tabindex="-1">
+        <img src="${esc(post.coverImage)}" alt="" width="320" height="180" loading="lazy" decoding="async" />
+      </a>
+      <div class="related-card-body">
+        <span class="related-card-badge blog-badge ${catClass(post.category)}">${esc(post.categoryLabel)}</span>
+        <h3 class="related-card-title">
+          <a href="./post.html?slug=${encodeURIComponent(post.slug)}">${esc(post.title)}</a>
+        </h3>
+        <p class="related-card-meta">
+          <span class="blog-author">
+            <span class="blog-avatar" aria-hidden="true">${esc(author.avatarText)}</span>
+            ${esc(author.name)}
+          </span>
+          <span class="related-card-dot" aria-hidden="true">·</span>
+          <span>${esc(readTimeLabel(post))}</span>
+        </p>
+      </div>
+    `;
+    return card;
+  }
+
+  function initReadingProgress(articleEl, endEl) {
+    const root = document.querySelector("#read-progress");
+    const bar = root?.querySelector(".read-progress-bar");
+    if (!root || !bar || !articleEl || !endEl) return;
+
+    const update = () => {
+      const startTop = articleEl.getBoundingClientRect().top + window.scrollY;
+      const endBottom = endEl.getBoundingClientRect().bottom + window.scrollY;
+      const track = endBottom - startTop - window.innerHeight;
+      const scrolled = window.scrollY - startTop;
+      let pct = track > 0 ? (scrolled / track) * 100 : scrolled > 0 ? 100 : 0;
+      pct = Math.max(0, Math.min(100, pct));
+      bar.style.width = `${pct}%`;
+      root.setAttribute("aria-valuenow", String(Math.round(pct)));
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+  }
+
+  function buildTableOfContents(headings, tocList, tocAside) {
+    if (!tocList || !tocAside || !headings.length) {
+      tocAside?.setAttribute("hidden", "");
+      return;
+    }
+
+    tocList.innerHTML = "";
+    const prefersReduced =
+      typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    headings.forEach((heading) => {
+      if (!heading.id) return;
+      const li = document.createElement("li");
+      li.className = heading.tagName === "H3" ? "post-toc-item is-h3" : "post-toc-item";
+      const a = document.createElement("a");
+      a.href = `#${heading.id}`;
+      a.textContent = heading.textContent || "";
+      a.addEventListener("click", (event) => {
+        event.preventDefault();
+        const target = document.getElementById(heading.id);
+        if (!target) return;
+        const headerEl = document.querySelector(".site-header");
+        const offset = (headerEl?.offsetHeight || 0) + 12;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: prefersReduced ? "auto" : "smooth" });
+        try {
+          history.replaceState(null, "", `#${heading.id}`);
+        } catch {
+          // ignore invalid history state in edge environments
+        }
+      });
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+
+    tocAside.removeAttribute("hidden");
+  }
+
+  function initTocActiveState(headings, tocList) {
+    if (!headings.length || !tocList) return;
+    const links = Array.from(tocList.querySelectorAll('a[href^="#"]'));
+    if (!links.length) return;
+
+    const syncActive = () => {
+      const headerH = document.querySelector(".site-header")?.offsetHeight || 0;
+      const marker = window.scrollY + headerH + 48;
+      let currentId = headings[0]?.id || "";
+      for (const h of headings) {
+        if (!h.id) continue;
+        const top = h.getBoundingClientRect().top + window.scrollY;
+        if (top <= marker) currentId = h.id;
+      }
+      links.forEach((link) => {
+        const id = link.getAttribute("href").slice(1);
+        link.classList.toggle("is-active", id === currentId);
+      });
+    };
+
+    syncActive();
+    window.addEventListener("scroll", syncActive, { passive: true });
+    window.addEventListener("resize", syncActive, { passive: true });
+  }
+
   function createListingCard(post, featured) {
     const author = authorFor(post);
     const article = document.createElement("article");
@@ -33,7 +235,7 @@
         <div class="blog-meta">
           <span class="blog-badge ${catClass(post.category)}">${esc(post.categoryLabel)}</span>
           <time datetime="${esc(post.dateISO)}">${esc(post.dateLabel)}</time>
-          <span>${esc(post.readTime)}</span>
+          <span>${esc(readTimeLabel(post))}</span>
         </div>
         <h2 class="blog-card-title">
           <a href="./post.html?slug=${encodeURIComponent(post.slug)}">${esc(post.title)}</a>
@@ -164,14 +366,35 @@
 
     document.querySelector("#post-badge").className = `blog-badge ${catClass(post.category)}`;
     document.querySelector("#post-badge").textContent = post.categoryLabel;
+    document.title = `${post.title} | Regis Mfitumukiza`;
     document.querySelector("#post-title").textContent = post.title;
     document.querySelector("#post-author").innerHTML = `<span class="blog-avatar" aria-hidden="true">${esc(author.avatarText)}</span>${esc(author.name)}`;
     document.querySelector("#post-date").textContent = post.dateLabel;
-    document.querySelector("#post-read-time").textContent = post.readTime;
+    document.querySelector("#post-read-time").textContent = readTimeLabel(post);
     const cover = document.querySelector("#post-cover");
     cover.src = post.coverImage;
     cover.alt = `${post.title} cover image`;
-    document.querySelector("#post-content").innerHTML = contentToHtml(post.content || []);
+    const contentEl = document.querySelector("#post-content");
+    contentEl.innerHTML = contentToHtml(post.content || []);
+    const headings = ensureHeadingIds(contentEl);
+    buildTableOfContents(headings, document.querySelector("#post-toc-list"), document.querySelector("#post-toc-aside"));
+    initTocActiveState(headings, document.querySelector("#post-toc-list"));
+
+    const relatedSection = document.querySelector("#related-posts");
+    const relatedGrid = document.querySelector("#related-posts-grid");
+    if (relatedSection && relatedGrid) {
+      relatedGrid.innerHTML = "";
+      const related = pickRelatedPosts(post, 3);
+      if (related.length) {
+        related.forEach((p) => relatedGrid.appendChild(createRelatedCard(p)));
+        relatedSection.removeAttribute("hidden");
+      } else {
+        relatedSection.setAttribute("hidden", "");
+      }
+    }
+
+    const endProgressEl = document.querySelector(".post-footer");
+    initReadingProgress(article, endProgressEl);
 
     const tags = document.querySelector("#post-tags");
     tags.innerHTML = (post.tags || []).map((t) => `<span class="post-tag">${esc(t)}</span>`).join("");
@@ -229,53 +452,3 @@
   initFilters();
   initPostPage();
 })();
-const posts = [
-  {
-    title: "How I Build Responsive UI Systems",
-    excerpt: "A practical workflow for scalable and responsive interfaces.",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80",
-    category: "frontend",
-    slug: "post.html",
-  },
-  {
-    title: "From Figma to Production",
-    excerpt: "Bridging design and development with component thinking.",
-    image:
-      "https://images.unsplash.com/photo-1618005198919-d3d4b5a92eee?auto=format&fit=crop&w=1000&q=80",
-    category: "career",
-    slug: "post.html",
-  },
-];
-
-const blogGrid = document.querySelector("#blog-grid");
-const blogFilters = document.querySelectorAll("#blog-filters .filter-btn");
-
-function renderPosts(filter = "all") {
-  if (!blogGrid) return;
-  blogGrid.innerHTML = "";
-  const filteredPosts =
-    filter === "all" ? posts : posts.filter((post) => post.category === filter);
-
-  filteredPosts.forEach((post) => {
-    const card = document.createElement("article");
-    card.className = "project-card";
-    card.innerHTML = `
-      <img src="${post.image}" alt="${post.title}" />
-      <h3>${post.title}</h3>
-      <p>${post.excerpt}</p>
-      <a href="./${post.slug}" class="btn btn-secondary">Read More</a>
-    `;
-    blogGrid.appendChild(card);
-  });
-}
-
-blogFilters.forEach((button) => {
-  button.addEventListener("click", () => {
-    blogFilters.forEach((b) => b.classList.remove("active"));
-    button.classList.add("active");
-    renderPosts(button.dataset.filter);
-  });
-});
-
-renderPosts();

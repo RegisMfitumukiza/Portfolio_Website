@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body class="dark-theme">
+    <div
+      id="read-progress"
+      class="read-progress"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+      aria-label="Reading progress"
+    >
+      <div class="read-progress-bar"></div>
+    </div>
     <header class="site-header">
       <nav class="container nav">
         <a href="./index.html#hero" class="brand">
@@ -38,7 +49,7 @@
 
     <main id="main-content">
       <div class="section container post-page">
-      <article id="blog-post" class="post-article">
+        <article id="blog-post" class="post-article">
         <a class="back-to-blog" href="./blog.html">&larr; Back to Blog</a>
 
         <header class="post-header">
@@ -54,18 +65,43 @@
         </header>
 
         <img id="post-cover" class="post-cover" src="" alt="" width="1400" height="840" />
-        <section id="post-content" class="post-content"></section>
 
-        <footer class="post-footer">
+        <div class="post-body-layout">
+          <aside class="post-toc-aside" id="post-toc-aside" hidden>
+            <nav class="post-toc" aria-label="On this page">
+              <p class="post-toc-heading">On this page</p>
+              <ol class="post-toc-list" id="post-toc-list"></ol>
+            </nav>
+          </aside>
+          <div class="post-body-main">
+            <section id="post-content" class="post-content"></section>
+
+            <footer class="post-footer">
           <div id="post-tags" class="post-tags"></div>
-          <div class="post-share">
-            <a id="share-linkedin" class="share-btn" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a id="share-twitter" class="share-btn" href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <button id="share-copy" class="share-btn" type="button">Copy Link</button>
+          <div class="post-share-wrap">
+            <p class="post-share-label">Share</p>
+            <div class="post-share">
+              <a id="share-linkedin" class="share-btn share-btn-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d="M6.5 6.7A2.2 2.2 0 1 1 6.5 2.3a2.2 2.2 0 0 1 0 4.4ZM4.6 21.7h3.8V8.5H4.6v13.2ZM10.1 8.5h3.6v1.8h.1c.5-1 1.8-2.1 3.7-2.1 3.9 0 4.6 2.6 4.6 5.9v7.6h-3.8v-6.7c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5v6.8h-3.8V8.5Z" />
+                </svg>
+              </a>
+              <a id="share-twitter" class="share-btn share-btn-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X (Twitter)">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d="M18.9 2H22l-6.8 7.8L23 22h-6.9l-4.8-6.2L5.9 22H2l7.3-8.4L1 2h7l4.4 5.7L18.9 2Zm-2.4 18h1.7L7.4 3.9H5.6L16.5 20Z" />
+                </svg>
+              </a>
+              <button id="share-copy" class="share-btn" type="button">Copy Link</button>
+            </div>
           </div>
-        </footer>
+            </footer>
 
-        <section class="comments-section">
+            <section class="related-posts" id="related-posts" hidden aria-labelledby="related-posts-heading">
+          <h2 id="related-posts-heading" class="related-posts-title">Related posts</h2>
+          <div id="related-posts-grid" class="related-posts-grid"></div>
+            </section>
+
+            <section class="comments-section">
           <h2>Comments</h2>
           <div id="comments-list" class="comments-list"></div>
 
@@ -84,7 +120,9 @@
             </div>
             <button type="submit" class="comment-submit">Post Comment</button>
           </form>
-        </section>
+            </section>
+          </div>
+        </div>
       </article>
       </div>
     </main>
