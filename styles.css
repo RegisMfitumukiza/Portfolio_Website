@@ -2336,6 +2336,26 @@ a.contact-item-value:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.55s ease;
 }
 
+.light-theme .blog-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
+}
+
+.light-theme .blog-card-title a {
+  color: var(--text-primary);
+}
+
+.light-theme .blog-card-excerpt,
+.light-theme .blog-author,
+.light-theme .blog-meta {
+  color: var(--text-secondary);
+}
+
+.light-theme .brand span {
+  white-space: nowrap;
+}
+
 .blog-card.in-view {
   opacity: 1;
   transform: translateY(0);
@@ -2352,15 +2372,23 @@ a.contact-item-value:hover {
   overflow: hidden;
 }
 
+.blog-card-media {
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
 .blog-card-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.35s ease;
 }
 
 .blog-card:hover .blog-card-media img {
-  transform: scale(1.04);
+  transform: scale(1.01);
 }
 
 .blog-card-body {
@@ -2664,10 +2692,19 @@ a.contact-item-value:hover {
   aspect-ratio: 16 / 9;
 }
 
+.related-card-media {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-secondary);
+}
+
 .related-card-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .related-card-body {
@@ -2774,6 +2811,7 @@ a.contact-item-value:hover {
 .post-cover {
   margin-top: 1rem;
   width: 100%;
+  height: auto;
   border-radius: 14px;
   border: 1px solid var(--border);
   box-shadow: 0 14px 28px rgba(2, 6, 23, 0.52);

@@ -27,7 +27,7 @@
     article.dataset.category = post.category;
     article.innerHTML = `
       <a class="blog-card-media" href="./post.html?slug=${encodeURIComponent(post.slug)}" aria-label="${esc(post.title)}">
-        <img src="${post.coverImage}" alt="${esc(post.title)} cover image" loading="lazy" decoding="async" width="1200" height="720" />
+        <img src="${post.coverImage}" alt="${esc(post.title)} cover image" loading="lazy" decoding="async" />
       </a>
       <div class="blog-card-body">
         <div class="blog-meta">

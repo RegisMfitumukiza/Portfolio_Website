@@ -1,3 +1,15 @@
+/**
+ * BLOG DATA STRUCTURE
+ * 
+ * IMPORTANT: All cover images should be 1920x1080 (16:9 aspect ratio) for consistent
+ * display across blog cards and post pages. Place images in the ./Images/ folder.
+ * 
+ * Example: coverImage: "./Images/my-cover-image.jpg"
+ * 
+ * The CSS uses object-fit: contain, so other sizes will work but may have letterboxing.
+ * 1920x1080 ensures pixel-perfect quality across all displays.
+ */
+
 window.BLOG_DATA = {
   authors: {
     regis: {
